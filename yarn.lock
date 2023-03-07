@@ -1005,10 +1005,10 @@
   resolved "https://registry.yarnpkg.com/@barksh/authentication-types/-/authentication-types-1.0.0.tgz#006b61f4dc1291292c61bd47d5626a4724e3af0a"
   integrity sha512-bM0wZOM6QwRsFUvo95aPDbfpcxA1cd0On1tB9Y66n9Gz25pIR5LOQsHh5XjKxCTfR5rXnqL7DX1yrK7zZUXS4w==
 
-"@barksh/client-authentication-node@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@barksh/client-authentication-node/-/client-authentication-node-1.2.0.tgz#8c939d8ab7b97b5348e7ce4a79fd33171e3eb3d5"
-  integrity sha512-9vS4DSGabX4bx0hxE8OCIrZqCLr+NBs9sSpX0nLUoVuYPeCJq+MT/lp1of6QmBEocgago/D0nU5mig1n4slNww==
+"@barksh/client-authentication-node@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@barksh/client-authentication-node/-/client-authentication-node-1.2.1.tgz#d80c673959f0daec6b399e191df97befd71733d9"
+  integrity sha512-uCXXWmEmywmTfjJ7aNtOyd7RR4cfijL6gY7fAxtTII+1hmJaBoDdUqKkymVPLPRrgLZrGuTtWH9G2sLtKyehNg==
   dependencies:
     "@sudoo/magic" "^1.9.0"
     axios "^1.3.4"

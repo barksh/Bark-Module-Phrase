@@ -42,6 +42,9 @@ export const portalPutPhraseHandler: APIGatewayProxyHandler = wrapHandler(verifi
             );
         }
 
+        const domain: string = token.getSelfDomain();
+
+        console.log(domain);
         console.log('Token', token);
 
         return createSucceedLambdaResponse({
