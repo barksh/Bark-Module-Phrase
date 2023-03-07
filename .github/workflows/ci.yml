@@ -1,0 +1,46 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    env:
+      INTERSECTION_MONGO_DB: "PLACEHOLDER"
+      INTERSECTION_SELF_DOMAIN: "PLACEHOLDER"
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        node-version:
+          - 16
+        architecture:
+          - x64
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          architecture: ${{ matrix.architecture }}
+      - name: Install Dependencies
+        run: |
+          npm install @sudoo/build-cli -g
+          sudoo-build install
+      - name: Lint
+        run: |
+          sudoo-build lint
+      - name: Test
+        run: |
+          sudoo-build coverage
+      - name: Build
+        run: |
+          ./node_modules/.bin/serverless package
+      - name: Codecov
+        uses: codecov/codecov-action@v1

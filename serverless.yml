@@ -1,0 +1,35 @@
+service: barksh-module-phrase
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  stage: prod
+  region: us-east-1
+  runtime: nodejs18.x
+  memorySize: 256
+  timeout: 10
+  httpApi:
+    cors: true
+  apiGateway:
+    minimumCompressionSize: 1024
+  environment:
+    PHRASE_MONGO_DB: ${env:PHRASE_MONGO_DB}
+
+plugins:
+  - serverless-offline
+  - serverless-plugin-typescript
+
+custom:
+  serverlessPluginTypescript:
+    tsConfigFileLocation: "./typescript/tsconfig.build.json"
+  serverless-offline:
+    useChildProcesses: true
+    httpPort: 4000
+
+functions:
+  PlanPutPhrasePost:
+    handler: src/handlers/plan/post-put-phrase.planPostPutPhraseHandler
+    events:
+      - httpApi:
+          path: /plan/phrase
+          method: put
