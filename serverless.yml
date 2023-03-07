@@ -13,6 +13,7 @@ provider:
   apiGateway:
     minimumCompressionSize: 1024
   environment:
+    PHRASE_SELF_DOMAIN: ${env:PHRASE_SELF_DOMAIN}
     PHRASE_MONGO_DB: ${env:PHRASE_MONGO_DB}
 
 plugins:

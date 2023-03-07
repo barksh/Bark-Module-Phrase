@@ -1,0 +1,46 @@
+{
+    "name": "@barksh-module/phrase",
+    "private": true,
+    "version": "1.0.0",
+    "dependencies": {
+        "@barksh/authentication-types": "^1.0.0",
+        "@barksh/client-authentication-node": "^1.1.0",
+        "@barksh/token-node": "^1.0.0",
+        "@sudoo/jwt": "^3.5.0",
+        "@sudoo/lambda": "^3.1.0",
+        "@sudoo/lambda-verify": "^2.0.0",
+        "@sudoo/log": "^1.8.0",
+        "@sudoo/magic": "^1.9.0",
+        "@sudoo/pattern": "^1.10.0",
+        "@sudoo/token": "^1.6.1",
+        "@sudoo/triforce-mongoose": "^1.6.0",
+        "@sudoo/uuid": "^1.1.0",
+        "@sudoo/verify": "^1.19.0",
+        "connor": "^2.8.0"
+    },
+    "devDependencies": {
+        "@sudoo/triforce": "^3.10.1",
+        "@sudoo/triforce-mongoose-dev": "^1.6.0",
+        "@types/aws-lambda": "^8.10.111",
+        "aws-lambda": "^1.0.7",
+        "serverless": "^3.28.1",
+        "serverless-offline": "^12.0.4",
+        "serverless-plugin-typescript": "^2.1.4",
+        "ts-node": "^10.9.1"
+    },
+    "nyc": {
+        "extension": [
+            ".ts"
+        ],
+        "include": [
+            "src/**/*.ts"
+        ],
+        "instrument": true,
+        "reporter": [
+            "json",
+            "text-summary"
+        ],
+        "report-dir": "coverage",
+        "sourceMap": true
+    }
+}

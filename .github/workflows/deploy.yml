@@ -37,7 +37,7 @@ jobs:
         with:
           args: deploy
         env:
-          INTERSECTION_MONGO_DB: ${{ secrets.INTERSECTION_MONGO_DB }}
-          INTERSECTION_SELF_DOMAIN: ${{ secrets.INTERSECTION_SELF_DOMAIN }}
+          PHRASE_MONGO_DB: ${{ secrets.PHRASE_MONGO_DB }}
+          PHRASE_SELF_DOMAIN: ${{ secrets.PHRASE_SELF_DOMAIN }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

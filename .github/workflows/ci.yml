@@ -12,8 +12,8 @@ jobs:
   build:
     runs-on: ${{ matrix.os }}
     env:
-      INTERSECTION_MONGO_DB: "PLACEHOLDER"
-      INTERSECTION_SELF_DOMAIN: "PLACEHOLDER"
+      PHRASE_MONGO_DB: "PLACEHOLDER"
+      PHRASE_SELF_DOMAIN: "PLACEHOLDER"
     strategy:
       matrix:
         os:
