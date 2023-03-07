@@ -6,12 +6,12 @@
 
 import { requestBarkPublicKeyV1, RequestBarkPublicKeyV1Response } from "@barksh/client-authentication-node";
 import { BarkAuthenticationToken } from "@barksh/token-node";
-import { Initializer } from "../../initialize/initializer";
 import { logAgent } from "../../util/log/log";
 
 const publicKeyCaches = new Map<string, string>();
 
 const getPublicKey = async (
+    selfDomain: string,
     targetDomain: string,
 ): Promise<string> => {
 
@@ -22,9 +22,12 @@ const getPublicKey = async (
     }
 
     logAgent.info('Get public key from remote', targetDomain);
-    const publicKey: RequestBarkPublicKeyV1Response = await requestBarkPublicKeyV1(targetDomain, {
-        domain: Initializer.getInstance().getSelfDomain(),
-    });
+    const publicKey: RequestBarkPublicKeyV1Response = await requestBarkPublicKeyV1(
+        targetDomain,
+        {
+            domain: selfDomain,
+        },
+    );
 
     publicKeyCaches.set(targetDomain, publicKey.publicKey);
 
@@ -33,10 +36,12 @@ const getPublicKey = async (
 
 export const verifyTokenSignature = async (
     token: BarkAuthenticationToken,
-    targetDomain: string,
 ): Promise<boolean> => {
 
-    const publicKey: string = await getPublicKey(targetDomain);
+    const publicKey: string = await getPublicKey(
+        token.getSelfDomain(),
+        token.getTargetDomain(),
+    );
 
     return token.verifySignature(publicKey);
 };
