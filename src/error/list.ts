@@ -10,6 +10,9 @@ export const ERROR_LIST: Record<ERROR_CODE, string> = {
 
     [ERROR_CODE.INVALID_AUTHORIZATION_FIELD]: 'Invalid Authorization Field',
     [ERROR_CODE.INVALID_TOKEN]: 'Invalid Token',
+    [ERROR_CODE.UNABLE_TO_PARSE_TOKEN]: 'Unable To Parse Token',
+    [ERROR_CODE.INVALID_SELF_DOMAIN_TOKEN]: 'Invalid Self Domain Token',
+    [ERROR_CODE.INVALID_TOKEN_SIGNATURE]: 'Invalid Token Signature',
     [ERROR_CODE.REQUIRES_ADMINISTRATOR_1]: 'Requires Administrator, {}',
 
     [ERROR_CODE.APPLICATION_NOT_INITIALIZED]: 'Application Not Initialized',

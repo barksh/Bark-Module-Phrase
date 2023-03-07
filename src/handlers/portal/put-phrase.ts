@@ -33,7 +33,7 @@ export const portalPutPhraseHandler: APIGatewayProxyHandler = wrapHandler(verifi
 
         const body: Body = event.verifiedBody;
 
-        const token: BarkAuthenticationToken = verifyAndGetToken(event.headers);
+        const token: BarkAuthenticationToken = await verifyAndGetToken(event.headers);
 
         if (!token.isAdministrator()) {
             return createErroredLambdaResponse(
