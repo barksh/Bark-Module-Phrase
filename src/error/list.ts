@@ -10,6 +10,7 @@ export const ERROR_LIST: Record<ERROR_CODE, string> = {
 
     [ERROR_CODE.INVALID_AUTHORIZATION_FIELD]: 'Invalid Authorization Field',
     [ERROR_CODE.INVALID_TOKEN]: 'Invalid Token',
+    [ERROR_CODE.REQUIRES_ADMINISTRATOR_1]: 'Requires Administrator, {}',
 
     [ERROR_CODE.APPLICATION_NOT_INITIALIZED]: 'Application Not Initialized',
     [ERROR_CODE.ENVIRONMENT_VARIABLE_REQUIRED_BUT_NOT_FOUND_1]: 'Environment Variable Required But Not Found, {}',

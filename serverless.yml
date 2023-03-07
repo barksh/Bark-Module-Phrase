@@ -28,9 +28,9 @@ custom:
     httpPort: 4000
 
 functions:
-  PlanPutPhrasePost:
-    handler: src/handlers/plan/post-put-phrase.planPostPutPhraseHandler
+  PortalPhrasePut:
+    handler: src/handlers/portal/put-phrase.portalPutPhraseHandler
     events:
       - httpApi:
-          path: /plan/phrase
+          path: /portal/phrase
           method: put

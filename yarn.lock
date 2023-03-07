@@ -1014,12 +1014,12 @@
     axios "^1.3.4"
     connor "^2.8.0"
 
-"@barksh/token-node@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@barksh/token-node/-/token-node-1.0.0.tgz#77837b9922245dd97043a54bb971e6511b71c76b"
-  integrity sha512-M42Y7OMkmduJ70lHHrOeB+ckUZdt5lwcPG1xAn1Og247GTGu64dHDzQo5JjRhC+vt3Se3JCgyjE1UPHKVCJdrg==
+"@barksh/token-node@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@barksh/token-node/-/token-node-1.2.0.tgz#c88eee6e76c954492ef8b062475718d2e76bcb6a"
+  integrity sha512-pL0PcsaHlLZOybeS2m0iP2SLw1b1OC5KhGxAJwZJt3dK9xgSTIDv4UmVG2cwbsywLUk6BYh4x+uQ1j6gs1R+XQ==
   dependencies:
-    "@sudoo/jwt" "^3.1.0"
+    "@sudoo/jwt" "^3.5.0"
     connor "^2.8.0"
 
 "@cspotcode/source-map-support@^0.8.0":
@@ -1538,7 +1538,7 @@
   resolved "https://registry.yarnpkg.com/@sudoo/jwt-config/-/jwt-config-1.3.0.tgz#62c7507a5f78f6148ca255ea86036c330a11ab39"
   integrity sha512-BqP0E0my8dsgMxNfC4BvZ2BLBqFoB2FLusxkUUmuJSqqbOrINNcIzTZkNHj7Ht5+3/pVPKpDPniLbqK2u9v7nw==
 
-"@sudoo/jwt@^3.1.0", "@sudoo/jwt@^3.5.0":
+"@sudoo/jwt@^3.5.0":
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/@sudoo/jwt/-/jwt-3.5.0.tgz#08a64b08eb92c59bd1ef5405507dcb42f39c6ca2"
   integrity sha512-ac1vEHFS63A1XHJyO9CO58Zt9PGF5wMhw7fKPjJmx9YjHpWIzL6paIkQhsCOakztnryePCstqeAwcx55NJzVyQ==
