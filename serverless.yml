@@ -28,6 +28,12 @@ custom:
     httpPort: 4000
 
 functions:
+  PhraseGet:
+    handler: src/handlers/phrase/get.phraseGetHandler
+    events:
+      - httpApi:
+          path: /phrase
+          method: get
   PortalPhrasePut:
     handler: src/handlers/portal/put-phrase.portalPutPhraseHandler
     events:

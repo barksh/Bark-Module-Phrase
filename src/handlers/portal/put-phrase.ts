@@ -1,7 +1,7 @@
 /**
  * @author WMXPY
  * @namespace Handlers_Portal
- * @description Phrase
+ * @description Put Phrase
  */
 
 import { BarkAuthenticationToken } from "@barksh/token-node";
