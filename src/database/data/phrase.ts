@@ -26,7 +26,7 @@ export const validatePhraseIdentifier = (
         return PHRASE_IDENTIFIER_VALIDATE_RESPONSE.MUST_END_WITH_LETTER_OR_NUMBER;
     }
 
-    if (!/^([A-Za-z0-9]|-)+$/.test(phraseIdentifier)) {
+    if (!/^([A-Za-z0-9]|-|\.)+$/.test(phraseIdentifier)) {
         return PHRASE_IDENTIFIER_VALIDATE_RESPONSE.ONLY_LETTERS_OR_NUMBERS;
     }
 

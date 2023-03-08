@@ -7,7 +7,7 @@
 import { BarkAuthenticationToken } from "@barksh/token-node";
 import { LambdaVerifier, VerifiedAPIGatewayProxyEvent } from "@sudoo/lambda-verify";
 import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
-import { createStrictMapPattern } from "@sudoo/pattern";
+import { createStrictMapPattern, createStringPattern } from "@sudoo/pattern";
 import { APIGatewayProxyHandler, APIGatewayProxyResult, Context } from "aws-lambda";
 import { ERROR_CODE } from "../../error/code";
 import { panic } from "../../error/panic";
@@ -18,11 +18,13 @@ import { wrapHandler } from "../common/setup";
 const verifier: LambdaVerifier = LambdaVerifier.create()
     .setBodyPattern(
         createStrictMapPattern({
+            scopeDomain: createStringPattern(),
         }),
     );
 
 type Body = {
-    // Nothing
+
+    readonly scopeDomain: string;
 };
 
 export const portalPutPhraseHandler: APIGatewayProxyHandler = wrapHandler(verifier,
@@ -45,7 +47,6 @@ export const portalPutPhraseHandler: APIGatewayProxyHandler = wrapHandler(verifi
         const domain: string = token.getSelfDomain();
 
         console.log(domain);
-
 
         return createSucceedLambdaResponse({
             ...body,
