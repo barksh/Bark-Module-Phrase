@@ -49,3 +49,21 @@ export const createOrGetPhrase = async (
 
     return newPhrase;
 };
+
+export const searchPhrasesByIdentifier = async (
+    domain: string,
+    identifier: string,
+    page: number,
+    limit: number = 32,
+): Promise<IPhraseModel[]> => {
+
+    const phrases: IPhraseModel[] = await PhraseModel.find({
+        domain,
+        identifier: {
+            $regex: identifier,
+            $options: 'i',
+        },
+    }).skip(page * limit).limit(limit);
+
+    return phrases;
+};
