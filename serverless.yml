@@ -22,7 +22,7 @@ plugins:
 
 custom:
   serverlessPluginTypescript:
-    tsConfigFileLocation: "./typescript/tsconfig.build.json"
+    tsConfigFileLocation: "./typescript/tsconfig.json"
   serverless-offline:
     useChildProcesses: true
     httpPort: 4000

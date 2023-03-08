@@ -5,7 +5,7 @@
  */
 
 import { LOCALE } from "@sudoo/locale";
-import { ObjectId } from "bson";
+import { ObjectId, ObjectIdLike } from "bson";
 import { IBlurbConfig } from "../interface/blurb";
 import { BlurbModel, IBlurbModel } from "../model/blurb";
 
@@ -58,7 +58,7 @@ export const createOrReplaceBlurbContent = async (
 };
 
 export const batchGetBlurbByPhraseIdsAndLocale = async (
-    phraseIds: ObjectId[],
+    phraseIds: Array<ObjectIdLike | string>,
     locale: LOCALE,
 ): Promise<IBlurbModel[]> => {
 

@@ -22,10 +22,13 @@ const verifier: LambdaVerifier = LambdaVerifier.create()
     .setBodyPattern(
         createStrictMapPattern({
             scopeDomain: createStringPattern(),
-            searchPhraseIdentifier: createStringPattern(),
+            searchPhraseIdentifier: createStringPattern({
+                optional: true,
+            }),
             page: createNumberPattern({
                 integer: true,
                 minimum: 0,
+                optional: true,
             }),
         }),
     );
@@ -33,8 +36,8 @@ const verifier: LambdaVerifier = LambdaVerifier.create()
 type Body = {
 
     readonly scopeDomain: string;
-    readonly searchPhraseIdentifier: string;
-    readonly page: number;
+    readonly searchPhraseIdentifier?: string;
+    readonly page?: number;
 };
 
 export const portalPostQueryPhraseHandler: APIGatewayProxyHandler = wrapHandler(verifier,
@@ -70,8 +73,8 @@ export const portalPostQueryPhraseHandler: APIGatewayProxyHandler = wrapHandler(
 
         const phrases: IPhraseModel[] = await searchPhrasesByIdentifier(
             body.scopeDomain,
-            body.searchPhraseIdentifier,
-            body.page,
+            body.searchPhraseIdentifier ?? "",
+            body.page ?? 0,
         );
 
         return createSucceedLambdaResponse({

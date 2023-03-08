@@ -14,6 +14,7 @@ import { IBlurbModel } from "../../database/model/blurb";
 import { IPhraseModel } from "../../database/model/phrase";
 import { ERROR_CODE } from "../../error/code";
 import { panic } from "../../error/panic";
+import { logAgent } from "../../util/log/log";
 import { createSucceedLambdaResponse } from "../common/response";
 import { wrapHandler } from "../common/setup";
 
@@ -74,7 +75,6 @@ export const phraseGetHandler: APIGatewayProxyHandler = wrapHandler(verifier,
         }
 
         const phraseIdentifierMap: Map<string, IPhraseModel> = new Map<string, IPhraseModel>();
-
         for (const phrase of phrases) {
             phraseIdentifierMap.set(String(phrase._id), phrase);
         }
@@ -83,6 +83,22 @@ export const phraseGetHandler: APIGatewayProxyHandler = wrapHandler(verifier,
             phrases.map((phrase: IPhraseModel) => phrase._id),
             query.locale,
         );
+
+        const notFulfilled: Set<string> = new Set<string>(phraseIdentifierMap.keys());
+        for (const blurb of blurbs) {
+            notFulfilled.delete(String(blurb.phraseId.toString()));
+        }
+
+        if (notFulfilled.size > 0) {
+            logAgent.info(notFulfilled.size, 'phrases are not fulfilled with locale:', query.locale);
+            const notFulfilledBlurbs: IBlurbModel[] = await batchGetBlurbByPhraseIdsAndLocale(
+                [...notFulfilled],
+                LOCALE.ENGLISH_UNITED_STATES,
+            );
+
+            logAgent.info('Fulfilled:', notFulfilledBlurbs.length, 'blurbs with default locale');
+            blurbs.push(...notFulfilledBlurbs);
+        }
 
         return createSucceedLambdaResponse({
             phrases: blurbs.map((blurb: IBlurbModel) => {
