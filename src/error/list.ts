@@ -21,4 +21,6 @@ export const ERROR_LIST: Record<ERROR_CODE, string> = {
     [ERROR_CODE.ENVIRONMENT_VARIABLE_REQUIRED_BUT_NOT_FOUND_1]: 'Environment Variable Required But Not Found, {}',
 
     [ERROR_CODE.APPLICATION_INITIALIZED_WITH_INFO_MISSING_1]: 'Application Initialized With Info Missing, {}',
+
+    [ERROR_CODE.INTERNAL_ERROR]: 'Internal Error',
 };

@@ -56,3 +56,18 @@ export const createOrReplaceBlurbContent = async (
 
     return newBlurb;
 };
+
+export const batchGetBlurbByPhraseIdsAndLocale = async (
+    phraseIds: ObjectId[],
+    locale: LOCALE,
+): Promise<IBlurbModel[]> => {
+
+    const blurbs: IBlurbModel[] = await BlurbModel.find({
+        phraseId: {
+            $in: phraseIds,
+        },
+        locale,
+    });
+
+    return blurbs;
+};

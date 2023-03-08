@@ -34,6 +34,12 @@ functions:
       - httpApi:
           path: /phrase
           method: get
+  PortalQueryPhrasesPost:
+    handler: src/handlers/portal/post-query-phrases.portalPostQueryPhraseHandler
+    events:
+      - httpApi:
+          path: /portal/phrase/query
+          method: post
   PortalPhrasePut:
     handler: src/handlers/portal/put-phrase.portalPutPhraseHandler
     events:

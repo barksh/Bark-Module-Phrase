@@ -67,3 +67,18 @@ export const searchPhrasesByIdentifier = async (
 
     return phrases;
 };
+
+export const batchGetPhrasesByIdentifiers = async (
+    domain: string,
+    identifiers: string[],
+): Promise<IPhraseModel[]> => {
+
+    const phrases: IPhraseModel[] = await PhraseModel.find({
+        domain,
+        identifier: {
+            $in: identifiers,
+        },
+    });
+
+    return phrases;
+};
