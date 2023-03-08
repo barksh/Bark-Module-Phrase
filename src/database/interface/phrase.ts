@@ -7,7 +7,6 @@
 export interface IPhraseConfig {
 
     readonly domain: string;
-    readonly locale: string;
     readonly identifier: string;
 }
 

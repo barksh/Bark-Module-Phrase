@@ -19,6 +19,7 @@ const verifier: LambdaVerifier = LambdaVerifier.create()
     .setBodyPattern(
         createStrictMapPattern({
             scopeDomain: createStringPattern(),
+            phraseIdentifier: createStringPattern(),
         }),
     );
 

@@ -19,11 +19,6 @@ const PhraseSchema: Schema<IPhraseModel> = new Schema(
             required: true,
             index: true,
         },
-        locale: {
-            type: String,
-            required: true,
-            index: true,
-        },
         identifier: {
             type: String,
             required: true,
