@@ -23,3 +23,28 @@ export const createUnsavedBlurb = (
     };
     return new BlurbModel(BlurbConfig);
 };
+
+export const createOrReplaceBlurbContent = async (
+    phraseId: ObjectId,
+    locale: LOCALE,
+    content: string,
+): Promise<IBlurbModel> => {
+
+    const blurb: IBlurbModel | null = await BlurbModel.findOne({
+        phraseId,
+        locale,
+    });
+
+    if (blurb) {
+
+        blurb.content = content;
+        await blurb.save();
+
+        return blurb;
+    }
+
+    const newBlurb: IBlurbModel = createUnsavedBlurb(phraseId, locale, content);
+    await newBlurb.save();
+
+    return newBlurb;
+};

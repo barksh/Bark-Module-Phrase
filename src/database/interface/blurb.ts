@@ -12,7 +12,7 @@ export interface IBlurbConfig {
     readonly phraseId: ObjectId;
     readonly locale: LOCALE;
 
-    readonly content: string;
+    content: string;
 }
 
 export interface IBlurb extends IBlurbConfig {

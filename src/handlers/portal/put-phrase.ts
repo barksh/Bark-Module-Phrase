@@ -10,6 +10,10 @@ import { LOCALE, verifyLocale } from "@sudoo/locale";
 import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
 import { createCustomPattern, createStrictMapPattern, createStringPattern } from "@sudoo/pattern";
 import { APIGatewayProxyHandler, APIGatewayProxyResult, Context } from "aws-lambda";
+import { createOrReplaceBlurbContent } from "../../database/controller/blurb";
+import { createOrGetPhrase } from "../../database/controller/phrase";
+import { IBlurbModel } from "../../database/model/blurb";
+import { IPhraseModel } from "../../database/model/phrase";
 import { ERROR_CODE } from "../../error/code";
 import { panic } from "../../error/panic";
 import { dnsLookupPhraseOwnershipTxt } from "../../util/network/dns/txt";
@@ -25,6 +29,7 @@ const verifier: LambdaVerifier = LambdaVerifier.create()
             locale: createCustomPattern((value: any) => {
                 return verifyLocale(value);
             }),
+            content: createStringPattern(),
         }),
     );
 
@@ -33,6 +38,7 @@ type Body = {
     readonly scopeDomain: string;
     readonly phraseIdentifier: string;
     readonly locale: LOCALE;
+    readonly content: string;
 };
 
 export const portalPutPhraseHandler: APIGatewayProxyHandler = wrapHandler(verifier,
@@ -66,8 +72,22 @@ export const portalPutPhraseHandler: APIGatewayProxyHandler = wrapHandler(verifi
             );
         }
 
+        const phrase: IPhraseModel = await createOrGetPhrase(
+            body.scopeDomain,
+            body.phraseIdentifier,
+        );
+
+        const blurb: IBlurbModel = await createOrReplaceBlurbContent(
+            phrase._id,
+            body.locale,
+            body.content,
+        );
+
         return createSucceedLambdaResponse({
-            ...body,
+            scopeDomain: phrase.domain,
+            identifier: phrase.identifier,
+            locale: blurb.locale,
+            content: blurb.content,
         });
     },
 );
