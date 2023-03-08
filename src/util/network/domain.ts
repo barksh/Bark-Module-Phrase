@@ -20,7 +20,8 @@ export const getDomainHostOfURL = (url: string): string => {
 
     const parsed: URL = fixDomainUrl(url);
 
-    if (typeof parsed.port === 'string') {
+    if (typeof parsed.port === 'string'
+        && parsed.port.length > 0) {
         return `${parsed.hostname}:${parsed.port}`;
     }
     return parsed.hostname;

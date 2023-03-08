@@ -59,7 +59,7 @@ export const portalPutPhraseHandler: APIGatewayProxyHandler = wrapHandler(verifi
         }
 
         const availableOwnership: string[] = await dnsLookupPhraseOwnershipTxt(body.scopeDomain);
-        const domain: string = token.getSelfDomain();
+        const domain: string = token.getTargetDomain();
 
         if (!availableOwnership.includes(domain)) {
             return createErroredLambdaResponse(
