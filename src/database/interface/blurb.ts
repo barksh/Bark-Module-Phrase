@@ -5,13 +5,14 @@
  */
 
 import { LOCALE } from "@sudoo/locale";
+import { ObjectId } from "bson";
 
 export interface IBlurbConfig {
 
-    readonly phraseId: string;
-
-    readonly identifier: string;
+    readonly phraseId: ObjectId;
     readonly locale: LOCALE;
+
+    readonly content: string;
 }
 
 export interface IBlurb extends IBlurbConfig {
