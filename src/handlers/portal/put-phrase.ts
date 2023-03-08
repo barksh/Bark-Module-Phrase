@@ -6,11 +6,13 @@
 
 import { BarkAuthenticationToken } from "@barksh/token-node";
 import { LambdaVerifier, VerifiedAPIGatewayProxyEvent } from "@sudoo/lambda-verify";
+import { LOCALE, verifyLocale } from "@sudoo/locale";
 import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
-import { createStrictMapPattern, createStringPattern } from "@sudoo/pattern";
+import { createCustomPattern, createStrictMapPattern, createStringPattern } from "@sudoo/pattern";
 import { APIGatewayProxyHandler, APIGatewayProxyResult, Context } from "aws-lambda";
 import { ERROR_CODE } from "../../error/code";
 import { panic } from "../../error/panic";
+import { dnsLookupPhraseOwnershipTxt } from "../../util/network/dns/txt";
 import { verifyAndGetToken } from "../common/authentication";
 import { createErroredLambdaResponse, createSucceedLambdaResponse } from "../common/response";
 import { wrapHandler } from "../common/setup";
@@ -20,12 +22,17 @@ const verifier: LambdaVerifier = LambdaVerifier.create()
         createStrictMapPattern({
             scopeDomain: createStringPattern(),
             phraseIdentifier: createStringPattern(),
+            locale: createCustomPattern((value: any) => {
+                return verifyLocale(value);
+            }),
         }),
     );
 
 type Body = {
 
     readonly scopeDomain: string;
+    readonly phraseIdentifier: string;
+    readonly locale: LOCALE;
 };
 
 export const portalPutPhraseHandler: APIGatewayProxyHandler = wrapHandler(verifier,
@@ -45,9 +52,19 @@ export const portalPutPhraseHandler: APIGatewayProxyHandler = wrapHandler(verifi
             );
         }
 
+        const availableOwnership: string[] = await dnsLookupPhraseOwnershipTxt(body.scopeDomain);
         const domain: string = token.getSelfDomain();
 
-        console.log(domain);
+        if (!availableOwnership.includes(domain)) {
+            return createErroredLambdaResponse(
+                HTTP_RESPONSE_CODE.UNAUTHORIZED,
+                panic.code(
+                    ERROR_CODE.TOKEN_NOT_PART_OF_OWNERSHIP_GROUP_2,
+                    domain,
+                    availableOwnership,
+                ),
+            );
+        }
 
         return createSucceedLambdaResponse({
             ...body,
