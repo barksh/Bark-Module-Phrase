@@ -20,15 +20,25 @@ export const createUnsavedPhrase = (
     return new PhraseModel(phraseConfig);
 };
 
-export const createOrGetPhrase = async (
+export const getPhraseByDomainAndIdentifier = async (
     domain: string,
     identifier: string,
-): Promise<IPhraseModel> => {
+): Promise<IPhraseModel | null> => {
 
     const phrase: IPhraseModel | null = await PhraseModel.findOne({
         domain,
         identifier,
     });
+
+    return phrase;
+};
+
+export const createOrGetPhrase = async (
+    domain: string,
+    identifier: string,
+): Promise<IPhraseModel> => {
+
+    const phrase: IPhraseModel | null = await getPhraseByDomainAndIdentifier(domain, identifier);
 
     if (phrase) {
         return phrase;

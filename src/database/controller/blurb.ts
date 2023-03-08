@@ -24,16 +24,24 @@ export const createUnsavedBlurb = (
     return new BlurbModel(BlurbConfig);
 };
 
+export const getBlurbByPhraseIdAndLocale = async (
+    phraseId: ObjectId,
+    locale: LOCALE,
+): Promise<IBlurbModel | null> => {
+
+    return await BlurbModel.findOne({
+        phraseId,
+        locale,
+    });
+};
+
 export const createOrReplaceBlurbContent = async (
     phraseId: ObjectId,
     locale: LOCALE,
     content: string,
 ): Promise<IBlurbModel> => {
 
-    const blurb: IBlurbModel | null = await BlurbModel.findOne({
-        phraseId,
-        locale,
-    });
+    const blurb: IBlurbModel | null = await getBlurbByPhraseIdAndLocale(phraseId, locale);
 
     if (blurb) {
 
