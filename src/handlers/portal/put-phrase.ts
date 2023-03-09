@@ -54,7 +54,10 @@ export const portalPutPhraseHandler: APIGatewayProxyHandler = wrapHandler(verifi
         if (!token.isAdministrator()) {
             return createErroredLambdaResponse(
                 HTTP_RESPONSE_CODE.UNAUTHORIZED,
-                panic.code(ERROR_CODE.REQUIRES_ADMINISTRATOR_1, token.getAccountIdentifier()),
+                panic.code(
+                    ERROR_CODE.REQUIRES_ADMINISTRATOR_1,
+                    token.getAccountIdentifier(),
+                ),
             );
         }
 

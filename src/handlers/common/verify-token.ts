@@ -6,6 +6,9 @@
 
 import { requestBarkPublicKeyV1, RequestBarkPublicKeyV1Response } from "@barksh/client-authentication-node";
 import { BarkAuthenticationToken } from "@barksh/token-node";
+import { ERROR_CODE } from "../../error/code";
+import { panic } from "../../error/panic";
+import { Initializer } from "../../initialize/initializer";
 import { logAgent } from "../../util/log/log";
 
 const publicKeyCaches = new Map<string, string>();
@@ -38,8 +41,19 @@ export const verifyTokenSignature = async (
     token: BarkAuthenticationToken,
 ): Promise<boolean> => {
 
+    const tokenSelfDomain: string = token.getSelfDomain();
+    const actualSelfDomain: string = Initializer.getInstance().getSelfDomain();
+
+    if (tokenSelfDomain !== actualSelfDomain) {
+        throw panic.code(
+            ERROR_CODE.INVALID_SELF_DOMAIN_TOKEN_2,
+            actualSelfDomain,
+            tokenSelfDomain,
+        );
+    }
+
     const publicKey: string = await getPublicKey(
-        token.getSelfDomain(),
+        tokenSelfDomain,
         token.getTargetDomain(),
     );
 

@@ -17,7 +17,9 @@ const getAuthorizationField = (headers: any): any => {
     return headers.authorization;
 };
 
-export const verifyAndGetToken = async (headers: any): Promise<BarkAuthenticationToken> => {
+export const verifyAndGetToken = async (
+    headers: any,
+): Promise<BarkAuthenticationToken> => {
 
     const authorization: string = getAuthorizationField(headers);
 
@@ -36,9 +38,15 @@ export const verifyAndGetToken = async (headers: any): Promise<BarkAuthenticatio
         throw panic.code(ERROR_CODE.UNABLE_TO_PARSE_TOKEN);
     }
 
-    const verifyResult: boolean = await verifyTokenSignature(token);
+    const verifyTimeResult: boolean = token.verifyTime();
 
-    if (!verifyResult) {
+    if (!verifyTimeResult) {
+        throw panic.code(ERROR_CODE.INVALID_TOKEN);
+    }
+
+    const verifySignatureResult: boolean = await verifyTokenSignature(token);
+
+    if (!verifySignatureResult) {
         throw panic.code(ERROR_CODE.INVALID_TOKEN_SIGNATURE);
     }
 
