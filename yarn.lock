@@ -1559,10 +1559,10 @@
   dependencies:
     "@sudoo/magic" "^1.9.0"
 
-"@sudoo/locale@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/locale/-/locale-1.0.0.tgz#c64ba69b0a87e7dbe78de63c96da7800f4677eac"
-  integrity sha512-x5/elt44tvxoPZXXp8IwmGszdzJmfmYRXR5Ovwv6ur3JNZQ4qbj1ZZb7pNiknB3XImqk/eYAPzeyGc/EvFH0UQ==
+"@sudoo/locale@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@sudoo/locale/-/locale-1.0.1.tgz#1058bd40ae5a8a8a948569e4c0fc99f06e7e6ada"
+  integrity sha512-QXJ46aVm3KwqmGUY7eOBN1qGLprj7fGzu87tjcsrI2jB/d9L3pEzi+Ar27FXf8GXbO0V5mNaYa8na04wMzMZIg==
 
 "@sudoo/log@^1.8.0":
   version "1.8.0"
