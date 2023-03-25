@@ -22,7 +22,7 @@
     "devDependencies": {
         "@sudoo/triforce": "^3.11.0",
         "@sudoo/triforce-mongoose-dev": "^1.6.0",
-        "@types/aws-lambda": "^8.10.111",
+        "@types/aws-lambda": "^8.10.114",
         "aws-lambda": "^1.0.7",
         "serverless": "^3.29.0",
         "serverless-offline": "^12.0.4",
