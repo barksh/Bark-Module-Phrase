@@ -5,7 +5,7 @@
     "dependencies": {
         "@barksh/authentication-types": "^1.0.0",
         "@barksh/client-authentication-node": "^1.2.1",
-        "@barksh/token-node": "^1.3.0",
+        "@barksh/token-node": "^1.5.0",
         "@sudoo/jwt": "^3.5.0",
         "@sudoo/lambda": "^3.1.0",
         "@sudoo/lambda-verify": "^2.0.0",
