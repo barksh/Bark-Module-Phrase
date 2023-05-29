@@ -1555,10 +1555,10 @@
   dependencies:
     "@sudoo/jwt-config" "^1.3.0"
 
-"@sudoo/lambda-verify@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/lambda-verify/-/lambda-verify-2.0.0.tgz#9720d0582a84e276e6028e6875391aa426efc724"
-  integrity sha512-nU2f35DJYmwPgZOa6P1mw1Y9k+sJpCyRq1g5axKd1diMBho7AuUlKGiJMn5wFYEp8UrAhLbsK/Kzcnq60+Aq5A==
+"@sudoo/lambda-verify@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/lambda-verify/-/lambda-verify-2.1.0.tgz#b6d5bb81a346ddd892fdf3019316909379eb07a8"
+  integrity sha512-Lzk5dRNs9Tn0O+A8rsOKLTdqafFJfXUyyV70ZZkFlh3Tvv4GRM6vgckgOlVs6poLsyf3t1BjK4mbkkL3bhRLuw==
   dependencies:
     "@sudoo/magic" "^1.9.0"
 
