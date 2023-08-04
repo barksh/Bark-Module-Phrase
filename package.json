@@ -24,7 +24,7 @@
         "@sudoo/triforce-mongoose-dev": "^1.6.0",
         "@types/aws-lambda": "^8.10.119",
         "aws-lambda": "^1.0.7",
-        "serverless": "^3.32.2",
+        "serverless": "^3.34.0",
         "serverless-offline": "^12.0.4",
         "serverless-plugin-typescript": "^2.1.4",
         "ts-node": "^10.9.1"
