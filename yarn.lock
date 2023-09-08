@@ -992,10 +992,10 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
-"@barksh/authentication-types@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@barksh/authentication-types/-/authentication-types-1.0.0.tgz#006b61f4dc1291292c61bd47d5626a4724e3af0a"
-  integrity sha512-bM0wZOM6QwRsFUvo95aPDbfpcxA1cd0On1tB9Y66n9Gz25pIR5LOQsHh5XjKxCTfR5rXnqL7DX1yrK7zZUXS4w==
+"@barksh/authentication-types@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@barksh/authentication-types/-/authentication-types-1.1.0.tgz#d714f83948b69b183635a86a24ddcd303705faca"
+  integrity sha512-qEpfYmnINrYmF/GW//PLPjSOdBYzB8KT3lHf9UN/PDwxztU8ZDWLX3jtSonZcH1Ju/djbZPYG/DewBfe9G6plQ==
 
 "@barksh/client-authentication-node@^1.2.1":
   version "1.2.1"
