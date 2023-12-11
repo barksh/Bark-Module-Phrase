@@ -27,7 +27,7 @@
         "serverless": "^3.38.0",
         "serverless-offline": "^13.3.1",
         "serverless-plugin-typescript": "^2.1.4",
-        "ts-node": "^10.9.1"
+        "ts-node": "^10.9.2"
     },
     "nyc": {
         "extension": [
