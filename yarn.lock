@@ -2976,10 +2976,10 @@
   dependencies:
     "@sudoo/magic" "^1.9.0"
 
-"@sudoo/locale@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@sudoo/locale/-/locale-1.0.1.tgz#1058bd40ae5a8a8a948569e4c0fc99f06e7e6ada"
-  integrity sha512-QXJ46aVm3KwqmGUY7eOBN1qGLprj7fGzu87tjcsrI2jB/d9L3pEzi+Ar27FXf8GXbO0V5mNaYa8na04wMzMZIg==
+"@sudoo/locale@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/locale/-/locale-2.0.0.tgz#ae9ce5367b2d3ab75f9cd77ebd904510893387e3"
+  integrity sha512-e7I0i5ecAfzoajFOWam1scdk8wlTLe2UbHQWvMY6qo22pIM01NHe3HNnFbvHXUOgfceNwYhWZF3u6NM9foWJ6Q==
 
 "@sudoo/log@^1.8.0":
   version "1.8.0"
